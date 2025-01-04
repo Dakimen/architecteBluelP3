@@ -186,3 +186,32 @@ footer nav ul {
 	margin: 2em
 }
 
+#filter-section {
+	display: flex;
+	justify-content: center;
+}
+
+.filter-buttons {
+	display: flex;
+	width: 45%;
+	justify-content: space-evenly;
+	margin-left: 50px;
+}
+
+.buttonFilter {
+	display: flex;
+	border: 1px #1D6154 solid;
+	border-radius: 100px;
+	font-size: 16px;
+	justify-content: center;
+	height: 37px;
+	align-items: center;
+	color: #1D6154;
+	padding: 0px 15px;
+	box-sizing: border-box;
+}
+
+.filter-buttons .active {
+	color: white;
+	background-color: #1D6154;
+}
