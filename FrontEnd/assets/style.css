@@ -30,6 +30,10 @@ footer, header, hgroup, menu, nav, section {
 }
 body {
 	line-height: 1;
+	/* ajouté pour conformer le couleur à la maquette */
+	background-color: #fffef8;
+	position: relative;
+	min-height: 93vh;
 }
 ol, ul {
 	list-style: none;
@@ -93,6 +97,15 @@ nav ul {
 nav li {
 	padding: 0 10px;
 	font-size: 1.2em;
+}
+
+nav li a {
+	color: black;
+	text-decoration: none;
+}
+
+nav li a:hover {
+	color: #B1663C
 }
 
 li:hover {
@@ -186,6 +199,21 @@ footer nav ul {
 	margin: 2em
 }
 
+/********* footer color *********/
+
+main {
+	padding-bottom: 72.8px;
+}
+
+footer {
+	background-color: white;
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+}
+
+/********* Filtres *********/
+
 #filter-section {
 	display: flex;
 	justify-content: center;
@@ -193,9 +221,10 @@ footer nav ul {
 
 .filter-buttons {
 	display: flex;
-	width: 45%;
+	width: 48%;
 	justify-content: space-evenly;
 	margin-left: 50px;
+	font-family: 'Syne';
 }
 
 .buttonFilter {
@@ -214,4 +243,83 @@ footer nav ul {
 .filter-buttons .active {
 	color: white;
 	background-color: #1D6154;
+}
+
+/********* Page connexion *********/
+.mainConnexion {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.mainConnexion form {
+	display: flex;
+	flex-direction: column;
+	width: 33%;
+}
+
+.mainConnexion p {
+	margin: auto;
+}
+
+.mainConnexion p a {
+	color: black;
+}
+
+.champConnexion {
+	display: flex;
+	flex-direction: column;
+	text-align: left;
+}
+
+.champConnexion label {
+	font-family: 'Work Sans';
+}
+
+.champConnexion h2{
+	margin-bottom: 20px;
+}
+
+.champConnexion input {
+	height: 50px;
+	font-size: 1.2em;
+	border: none;
+	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+}
+
+.buttonSeConnecter {
+	height: 36px;
+	font-size: 17px;
+	border: none;
+	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+}
+
+.champConnexion label {
+	margin: 2em 0 1em 0;
+}
+
+/********* Mode éditeur *********/
+.editModeBar {
+	background-color: black;
+	color: white;
+	display:flex;
+}
+
+.hidden {
+	display: none;
+}
+
+.mesProjets {
+	display:flex;
+	justify-content: center;
+}
+
+.mesProjets h2 {
+	margin-bottom: 0;
+}
+
+.barDev {
+	background-color: black;
+	color: white;
+	height: 50px;
 }
