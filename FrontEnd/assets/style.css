@@ -30,7 +30,7 @@ footer, header, hgroup, menu, nav, section {
 }
 body {
 	line-height: 1;
-	/* ajouté pour conformer le couleur à la maquette */
+	/* ajouté pour conformer la couleur à la maquette */
 	background-color: #fffef8;
 	position: relative;
 	min-height: 93vh;
@@ -217,13 +217,13 @@ footer {
 #filter-section {
 	display: flex;
 	justify-content: center;
+	margin: 20px 0 50px 0;
 }
 
 .filter-buttons {
 	display: flex;
-	width: 48%;
+	width: 585px;
 	justify-content: space-evenly;
-	margin-left: 50px;
 	font-family: 'Syne';
 }
 
@@ -238,6 +238,7 @@ footer {
 	color: #1D6154;
 	padding: 0px 15px;
 	box-sizing: border-box;
+	min-width: 100px;
 }
 
 .filter-buttons .active {
@@ -298,28 +299,38 @@ footer {
 	margin: 2em 0 1em 0;
 }
 
+#idincorrect {
+    display: flex;
+    margin-top: -30px;
+    margin-bottom: 20px;
+}
+
 /********* Mode éditeur *********/
-.editModeBar {
-	background-color: black;
-	color: white;
+
+.mesProjets {
 	display:flex;
+	justify-content: center;
+	margin-top: 89px;
+}
+
+.mesProjets a {
+  display: flex;
+  gap: 5px;
+  color: black;
+  text-decoration: none;
+  padding: 10px 0px 0px 10px;
 }
 
 .hidden {
 	display: none;
 }
 
-.mesProjets {
-	display:flex;
-	justify-content: center;
-}
-
-.mesProjets h2 {
-	margin-bottom: 0;
-}
-
 .barDev {
 	background-color: black;
 	color: white;
 	height: 50px;
+	display: flex;
+	align-items:center;
+	justify-content:center;
 }
+

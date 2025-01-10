@@ -9,7 +9,7 @@
 	<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Work+Sans&display=swap" rel="stylesheet">
 	<meta name="description" content="">
 	<link rel="stylesheet" href="./assets/style.css">
-	<script src="/assets/script.js" defer></script>
+	<script src="/assets/scriptconnexion.js" defer></script>
 </head>
 <body>
     <header>
@@ -28,13 +28,14 @@
         <form method="" action="" class="formulaireSignIn">
             <div class="champConnexion" id="emailDiv">
                 <label for="email">E-mail</label>
-                <input type="text" id="email" name="email" required>
+                <input type="text" id="email" name="email">
             </div>
             <div class="champConnexion" id="motDePasseDiv">
                 <label for="champMotDePasse">Mot de passe</label>
-                <input type="password" id="champMotDePasse" name="champMotDePasse" required>
+                <input type="password" id="champMotDePasse" name="champMotDePasse">
             </div>
             <input type="submit" value="Se connecter" class="buttonSeConnecter" id="buttonSeConnecterId">
+            <div id="idincorrect"></div>
             <p><a href="">Mot de passe oublié</a></p>
         </form>
     </main>
