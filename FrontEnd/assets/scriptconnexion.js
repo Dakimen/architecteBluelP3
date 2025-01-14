@@ -1,3 +1,8 @@
+const token = window.localStorage.getItem("token")
+if (token) {
+    window.location.href = "index.html"
+}
+
 const buttonSeConnecter = document.querySelector("#buttonSeConnecterId")
 buttonSeConnecter.addEventListener("click", async() => {
     event.preventDefault()
@@ -58,6 +63,5 @@ const loginFail = () => {
 
 const loginSuccessful = () => {
     window.location.href = "index.html"
-    console.log(window.localStorage.getItem("token"))
 }
 
