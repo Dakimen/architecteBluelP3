@@ -41,10 +41,10 @@
             }
 
             const generateFilters = (categories) => {
-                const filteredButton = [...categories,{name:"Tous", id:0}]
-                filteredButton.sort((a,b) => a.id - b.id);
-                for (i = 0; i < filteredButton.length; i++) {
-                    const category = filteredButton[i]
+                const filteredButtons = [...categories,{name:"Tous", id:0}]
+                filteredButtons.sort((a,b) => a.id - b.id);
+                for (i = 0; i < filteredButtons.length; i++) {
+                    const category = filteredButtons[i]
                     const buttonFilter = document.createElement("a")
                     buttonFilter.classList.add("buttonFilter")
                     buttonFilter.innerText = category.name
@@ -65,6 +65,8 @@
                         buttonFilter.classList.add("active")
                     })
                 }
+                const filters = document.querySelectorAll(".buttonFilter");
+                filters[0].classList.add("active")
             }
 
             const removeActiveFilter = () => {
@@ -85,26 +87,26 @@
             }
 
             const generateBarEditTop = () => {
-                const barEdit = document.getElementById("barTop")
-                barEdit.classList.remove("hidden")
-                barEdit.classList.add("barDev")
-                barEdit.innerHTML = `
-                <i class="fa-regular fa-pen-to-square">
-                </i><p>Mode édition</p>
-                `
+                const barEdit = document.getElementById("barTop");
+                barEdit.classList.remove("hidden");
+                barEdit.classList.add("barDev");
+                const barEditI = document.createElement("i");
+                barEditI.className = "fa-regular fa-pen-to-square";
+                const barEditP = document.createElement("p");
+                barEditP.innerText = "Mode édition";
+                barEdit.appendChild(barEditI);
+                barEdit.appendChild(barEditP);
             }
 
             const showLogoutHideLogIn = () => {
-                const navigation = document.querySelector("nav")
-                navigation.innerHTML = ``
-                navigation.innerHTML = `
-                <ul>
-			        <li><a href="#portfolio">projets</a></li>
-			        <li><a href="#contact">contact</a></li>
-			        <li><a href="" id="buttonLogout">logout</a></li>
-			        <li><img src="./assets/icons/instagram.png" alt="Instagram"></li>
-		        </ul>
-                `
+                const navigationElements = document.querySelectorAll("header li");
+                const loginLogout = navigationElements[2];
+                loginLogout.innerHTML = "";
+                const listLogoutA = document.createElement("a");
+                listLogoutA.href = "";
+                listLogoutA.innerText = "logout";
+                listLogoutA.id = "buttonLogout";
+                loginLogout.appendChild(listLogoutA)
                 const buttonLogout = document.getElementById("buttonLogout")
                 buttonLogout.addEventListener("click", () => {
                     window.localStorage.removeItem("token")
@@ -124,10 +126,8 @@
                 mesProjets.appendChild(buttonModifier)
                 buttonModifier.appendChild(imagePenSquare)
                 buttonModifier.appendChild(textModifier)
-
                 const buttonsFiltres = document.querySelector(".filter-buttons")
                 buttonsFiltres.classList.add("hidden")
-
                 buttonModifier.addEventListener("click", generateModal)
             }
 
@@ -242,10 +242,11 @@
                 buttonAjouterPhoto.innerText = "+ Ajouter photo"
                 const inputFile = document.createElement("input")
                 buttonAjouterPhoto.appendChild(inputFile)
-                const inputFileText = document.createElement("p")
                 inputFile.type = "file"
                 inputFile.name = "Ajoutfile"
                 inputFile.id = "Ajoutfile"
+                inputFile.accept = "image/png, image/jpeg"
+                const inputFileText = document.createElement("p")
                 inputFileText.innerText = "jpg, png : 4mo max"
                 divFile.appendChild(imageI)
                 divFile.appendChild(buttonAjouterPhoto)
@@ -253,43 +254,37 @@
                 formAjout.appendChild(divFile)
                 
                 inputFile.onchange = function (evt) {
-                    var tgt = evt.target || window.event.srcElement,
-                        files = tgt.files
-
-                        const file = tgt.files[0]
+                    const file = evt.target.files[0];
                         if (file) {
                         const fileType = file.type;
-                        const validTypes = ['image/jpeg', 'image/png']
-
+                        const validTypes = ["image/jpeg", "image/png"];
                             if (validTypes.includes(fileType)) {
-                                var tailleLimit = 3
-                                var fileTaille = file.size
-                                var fileTailleMO = (fileTaille/1000000)
+                                var tailleLimit = 3;
+                                var fileTaille = file.size;
+                                var fileTailleMO = fileTaille/1000000;
                                 if (fileTailleMO < tailleLimit) {
-                                    if (FileReader && files && files.length) {
                                         var fr = new FileReader()
                                         fr.onload = function () {
-                                        const divCover = document.createElement("div")
-                                        divCover.className = "divCover"
-                                        const imgUpload = document.createElement("img")
-                                        imgUpload.src = fr.result
-                                        imgUpload.alt = "Image selectionnée"
-                                        imgUpload.className = "imageRecue"
-                                        divFile.appendChild(divCover)
-                                        divFile.appendChild(imgUpload)
-                                        divCover.addEventListener("click", () => regenerateAjoutFile())
-                                    }
-                                    fr.readAsDataURL(files[0])
-                                }
+                                            const divCover = document.createElement("div");
+                                            divCover.className = "divCover";
+                                            const imgUpload = document.createElement("img");
+                                            imgUpload.src = fr.result;
+                                            imgUpload.alt = "Image selectionnée";
+                                            imgUpload.className = "imageRecue";
+                                            divFile.appendChild(divCover);
+                                            divFile.appendChild(imgUpload);
+                                            imgUpload.addEventListener("click", () => regenerateAjoutFile());
+                                        }
+                                        fr.readAsDataURL(file);
                                 } else {
-                                const erreurTaille = document.createElement("p")
-                                erreurTaille.innerText = 'La taille du fichier dépasse 3 Mo'
-                                divFile.appendChild(erreurTaille)
+                                const erreurTaille = document.createElement("p");
+                                erreurTaille.innerText = 'La taille du fichier dépasse 3 Mo';
+                                divFile.appendChild(erreurTaille);
                                 }
                             } else {
-                                const messageMauvaisFormat = document.createElement("p")
-                                messageMauvaisFormat.innerText = 'Type de fichier invalide. Veuillez sélectionner un JPEG ou PNG.'
-                                divFile.appendChild(messageMauvaisFormat)
+                                const messageMauvaisFormat = document.createElement("p");
+                                messageMauvaisFormat.innerText = 'Type de fichier invalide. Veuillez sélectionner un JPEG ou PNG.';
+                                divFile.appendChild(messageMauvaisFormat);
                             }
                         }
                     }
