@@ -54,6 +54,10 @@ const verifierChamps = (champEmail, champMotDePasse) => {
 }
 
 const loginFail = () => {
+    const oldErrorMessage = document.getElementById("errorMessage")
+        if (oldErrorMessage !== null) {
+            oldErrorMessage.remove()
+        }
     const failedLogin = document.createElement("p")
     failedLogin.innerText = "Email ou Mot de passe incorrect"
     failedLogin.id = "errorMessage"
